@@ -48,7 +48,7 @@ int main() {
 
     // --- OUR NEW SAFETY NET ---
     sf::Font font;
-    bool fontLoaded = font.loadFromFile("font.ttf"); 
+    bool fontLoaded = font.loadFromFile("PressStart2P.ttf"); 
 
     sf::Text scoreText;
     if (fontLoaded) {

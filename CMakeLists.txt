@@ -19,5 +19,6 @@ target_link_libraries(my_game PRIVATE sfml-graphics sfml-window sfml-system)
 # files SFML needs and drop them directly next to the executable."
 add_custom_command(TARGET my_game POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:my_game> $<TARGET_FILE_DIR:my_game>
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/PressStart2P.ttf" $<TARGET_FILE_DIR:my_game>
     COMMAND_EXPAND_LISTS
 )
