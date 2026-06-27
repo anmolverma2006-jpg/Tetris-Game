@@ -149,7 +149,24 @@ int main() {
 
         // --- RENDER ---
         window.clear(sf::Color::Black);
-        sf::RectangleShape block(sf::Vector2f(29.f, 29.f));
+
+        // Draw a subtle background grid representing all cell outlines
+        sf::RectangleShape gridCell(sf::Vector2f(30.f, 30.f));
+        gridCell.setFillColor(sf::Color::Transparent);
+        gridCell.setOutlineThickness(-1.f); // Inner outline to prevent offset
+        gridCell.setOutlineColor(sf::Color(40, 40, 40)); // Subtle dark grey outline
+
+        for (int r = 0; r < 20; r++) {
+            for (int c = 0; c < 10; c++) {
+                gridCell.setPosition(c * 30.f, r * 30.f);
+                window.draw(gridCell);
+            }
+        }
+
+        // Setup filled block style with a black outline border
+        sf::RectangleShape block(sf::Vector2f(30.f, 30.f));
+        block.setOutlineThickness(-1.f);
+        block.setOutlineColor(sf::Color::Black);
 
         sf::Color colors[8] = {
             sf::Color::Black,
