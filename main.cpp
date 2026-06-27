@@ -199,16 +199,63 @@ int main() {
 
         // ONLY draw text if the font actually succeeded in loading!
         if (fontLoaded) {
-            std::stringstream ss;
             if (isGameOver) {
-                ss << "GAME OVER\nScore: " << score << "\nPress 'R'";
-                scoreText.setPosition(80.f, 250.f);
+                // Dim screen overlay
+                sf::RectangleShape overlay(sf::Vector2f(300.f, 600.f));
+                overlay.setFillColor(sf::Color(0, 0, 0, 200));
+                window.draw(overlay);
+
+                // Dialog box
+                sf::RectangleShape box(sf::Vector2f(240.f, 180.f));
+                box.setFillColor(sf::Color(20, 20, 20));
+                box.setOutlineThickness(2.f);
+                box.setOutlineColor(sf::Color::Red);
+                box.setPosition(30.f, 210.f);
+                window.draw(box);
+
+                // Game Over title (centered)
+                scoreText.setCharacterSize(16);
+                scoreText.setFillColor(sf::Color::Red);
+                scoreText.setString("GAME OVER");
+                scoreText.setOrigin(scoreText.getLocalBounds().left + scoreText.getLocalBounds().width / 2.f, 0.f);
+                scoreText.setPosition(150.f, 235.f);
+                window.draw(scoreText);
+
+                // Score text (centered)
+                scoreText.setCharacterSize(12);
+                scoreText.setFillColor(sf::Color::White);
+                std::stringstream ss;
+                ss << "SCORE: " << score;
+                scoreText.setString(ss.str());
+                scoreText.setOrigin(scoreText.getLocalBounds().left + scoreText.getLocalBounds().width / 2.f, 0.f);
+                scoreText.setPosition(150.f, 280.f);
+                window.draw(scoreText);
+
+                // Press R text (centered)
+                scoreText.setCharacterSize(10);
+                scoreText.setFillColor(sf::Color::Yellow);
+                scoreText.setString("PRESS 'R' TO RESTART");
+                scoreText.setOrigin(scoreText.getLocalBounds().left + scoreText.getLocalBounds().width / 2.f, 0.f);
+                scoreText.setPosition(150.f, 325.f);
+                window.draw(scoreText);
             } else {
-                ss << "Score: " << score;
-                scoreText.setPosition(10.f, 10.f);
+                // Active gameplay score banner
+                sf::RectangleShape scoreBg(sf::Vector2f(130.f, 28.f));
+                scoreBg.setFillColor(sf::Color(0, 0, 0, 160));
+                scoreBg.setOutlineThickness(1.f);
+                scoreBg.setOutlineColor(sf::Color(80, 80, 80));
+                scoreBg.setPosition(5.f, 5.f);
+                window.draw(scoreBg);
+
+                scoreText.setCharacterSize(10);
+                scoreText.setFillColor(sf::Color::White);
+                scoreText.setOrigin(0.f, 0.f); // Reset origin for top-left layout
+                std::stringstream ss;
+                ss << "Score:" << score;
+                scoreText.setString(ss.str());
+                scoreText.setPosition(12.f, 12.f);
+                window.draw(scoreText);
             }
-            scoreText.setString(ss.str());
-            window.draw(scoreText);
         }
 
         window.display();
