@@ -2,12 +2,6 @@
 
 A classic arcade-style Tetris game built using C++ and the Simple and Fast Multimedia Library (SFML). The game features a clean, retro design complete with pixel font overlays, grid layout alignment, and scoring.
 
-## Screenshots
-
-| Gameplay | Game Over |
-| :---: | :---: |
-| ![Gameplay](assets/gameplay.png.png) | ![Game Over](assets/gameover.png.png) |
-
 ## Features
 
 - **Retro Aesthetic**: Powered by the classic arcade "Press Start 2P" pixel font.
@@ -54,3 +48,9 @@ To build and run the game, you will need:
      ```powershell
      ./build/my_game.exe
      ```
+
+## Screenshots
+
+| Gameplay | Game Over |
+| :---: | :---: |
+| <img src="assets/gameover.png.png" width="180" alt="Gameplay"> | <img src="assets/gameplay.png.png" width="180" alt="Game Over"> |
